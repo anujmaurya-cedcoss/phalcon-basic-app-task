@@ -1,16 +1,10 @@
 <?php
-
 use Phalcon\Mvc\Controller;
-use Phalcon\Mvc\Model\Query;
-
-class LoginController extends Controller
-{
-    public function IndexAction()
-    {
+class LoginController extends Controller {
+    public function IndexAction(){
         // nothing here
     }
-    public function loginAction()
-    {
+    public function loginAction() {
         $user = new Users();
         $user->assign(
             $this->request->getPost(),
@@ -19,12 +13,13 @@ class LoginController extends Controller
                 'email'
             ]
         );
+        // query to find the user by name and email
         $query = $this->modelsManager->createQuery('SELECT * FROM Users WHERE name = :name: AND email = :email:');
         $usr = $query->execute([
             'name' => $user->name,
             'email' => $user->email
         ]);
-
+        // if some result is found, then return as logged in, else user doesn't exist
         if (isset($usr[0])) {
             $this->view->success = true;
             $this->view->message = "LoggedIn succesfully";
