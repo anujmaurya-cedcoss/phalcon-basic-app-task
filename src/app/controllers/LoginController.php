@@ -1,10 +1,14 @@
 <?php
 use Phalcon\Mvc\Controller;
-class LoginController extends Controller {
-    public function IndexAction(){
+
+class LoginController extends Controller
+{
+    public function IndexAction()
+    {
         // nothing here
     }
-    public function loginAction() {
+    public function loginAction()
+    {
         $user = new Users();
         $user->assign(
             $this->request->getPost(),

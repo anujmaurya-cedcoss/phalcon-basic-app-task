@@ -62,16 +62,6 @@ $container->set(
     }
 );
 
-// $container->set(
-//     'mongo',
-//     function () {
-//         $mongo = new MongoClient();
-
-//         return $mongo->selectDB('phalt');
-//     },
-//     true
-// );
-
 try {
     // Handle the request
     $response = $application->handle(
